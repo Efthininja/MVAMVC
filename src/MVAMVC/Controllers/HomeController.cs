@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using MVAMVC.Models;
@@ -14,15 +12,28 @@ namespace MVAMVC.Controllers
             return View();
         }
 
-        public string Foo()
+        public IActionResult Foo()
         {
-            return "Returning Foo";
+            return View();
         }
 
         [HttpPost]
-        public IActionResult About(User newuser)
+        public async Task<IActionResult> About(RegisterUser model)
         {
-            return View(newuser);
+            if (ModelState.IsValid)
+            {
+                /*
+                var nau = new ActiveUsers();
+                int i = nau.Username.Length;
+
+                nau.Username[i] = model.Email;
+                nau.Password[i] = model.Password;
+                nau.DateRegistered[i] = model.DateRegistered
+                */
+                
+            }
+
+            return View(model);
         }
 
         [HttpGet]
@@ -30,7 +41,13 @@ namespace MVAMVC.Controllers
         {
             ViewData["Message"] = "This text is from HomeController.cs";
 
-            return View();
+            var u = new RegisterUser
+            {
+                DateRegistered = DateTime.Now
+            };
+
+
+            return View(u);
         }
 
         public IActionResult Contact()

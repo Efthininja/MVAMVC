@@ -1,7 +1,77 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
 }
 
-Hey I'm Foo
+<div class="container">
+
+    <script type="text/javascript">
+
+        function Mammal(name) {
+
+            this.name = name;
+            this.getInfo = new function () {
+                return "The mammals name is " + this.name;
+            }
+        }
+
+        Mammal.prototype.sound = "Grrrr...";
+
+        Mammal.prototype.makeSound = function() {
+            return this.name + " says " + this.sound;
+        }
+        
+        var grover = new Mammal("Grover");
+
+        document.write(grover.makeSound() + "<br />");
+
+        for (var prop in grover) {
+            document.write(prop + " : " + grover[prop] + "<br />");
+        }
+
+        document.write("name Property of grover : " + grover.hasOwnProperty("name") + "<br />");
+
+        document.write("sound Property of Grover : " + grover.hasOwnProperty("sound") + "<br />");
+
+        Array.prototype.inArray = function inArray(value) {
+            for (i = 0; i < this.length; i++) {
+                if (this[i] === value) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        var sampArray = [1, 2, 3, 4, 5];
+
+        document.write("3 in array " + sampArray.inArray(3) + "<br />");
+
+
+        function SecretCode() {
+            var secretNum = 78;
+
+            this.guessNum = function (num) {
+                if (num > 78) {
+                    return "Lower";
+
+                } else if (num < 78) {
+                    return "Higher";
+
+                } else {
+                    return "You guessed it!"
+                }
+            }
+        }
+
+        var secret = new SecretCode();
+
+        document.write("Value of secretNum : " + secret.secretNum + "<br />");
+
+
+        document.write("Is 70 the number : " + secret.guessNum(78) + "<br />");
+
+
+    </script>
+
+</div>
+
+
+
